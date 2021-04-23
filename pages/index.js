@@ -13,7 +13,7 @@ export default function Home() {
         <div className="alert alert-primary text-center">
         <p className="h5">ページ移動のサンプルだじょ</p>
           <Link href="/other">
-            <a>Go to other page &gt;&gt;</a>
+            <button>Go to other page &gt;&gt;</button>
           </Link>
         </div>
       </div>
