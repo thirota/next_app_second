@@ -1,4 +1,4 @@
-import Header from './header'
+import Layout from '../components/layout'
 import Link from 'next/link'
 
 export default function Home() {
@@ -6,17 +6,14 @@ export default function Home() {
 
   return (
     <div>
-      <Header title={title}/>
-      <h1 className="bg-primary text-white display-4">React</h1>
-      <div className="container">
-        <h2 className="my-3">{title}</h2>
+      <Layout header="Next.js" title="Top page">
         <div className="alert alert-primary text-center">
-        <p className="h5">ページ移動のサンプルだじょ</p>
+          <h5 className="my-3">Welcome to next.js!</h5>
           <Link href="/other">
-            <button>Go to other page &gt;&gt;</button>
+            <button className="btn btn-primary">Go to other page &gt;&gt;</button>
           </Link>
         </div>
-      </div>
+      </Layout>
     </div>
   )
 }
