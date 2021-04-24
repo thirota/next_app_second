@@ -1,20 +1,18 @@
 import {useState} from 'react'
 import Layout from '../components/layout'
+import useSWR from 'swr'
 
 export default function Home() {
-  const url = './data.json'
-  const [data, setData] = useState({message:'',data:[]})
+  console.log("Home start")
 
-  //XXX TypeError: Only absolute URLs are supported
-  fetch(url)
-  .then(res=> res.json())
-  .then(res=> setData(res))
+//  const data = undefined
+  const {data} = useSWR('./data.json')
 
   return (
     <div>
       <Layout header="Next.js" title="Top page">
         <div className="alert alert-primary text-center">
-          <h5 className="my-3">{data.message}</h5>
+          <h5 className="my-3">{data !== undefined ? data.message : 'error...'}</h5>
           <table className="table bg-white">
             <thead className="table-dark">
               <tr>
@@ -25,6 +23,7 @@ export default function Home() {
             </thead>
             <tbody>
               {
+                data !== undefined ? 
                 data.data.map((value,key)=>(
                   <tr key={key}>
                     <th>{value.name}</th>
@@ -32,6 +31,8 @@ export default function Home() {
                     <th>{value.age}</th>
                   </tr>
                 ))
+                :
+                <tr><td></td><td>no data.</td><td></td></tr>
               }
             </tbody>
           </table>
