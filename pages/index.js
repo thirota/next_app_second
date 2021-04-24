@@ -1,15 +1,40 @@
+import {useState} from 'react'
 import Layout from '../components/layout'
-import MyImage from '../components/image'
 
 export default function Home() {
-  let title = "Index"
+  const url = './data.json'
+  const [data, setData] = useState({message:'',data:[]})
+
+  //XXX TypeError: Only absolute URLs are supported
+  fetch(url)
+  .then(res=> res.json())
+  .then(res=> setData(res))
 
   return (
     <div>
       <Layout header="Next.js" title="Top page">
         <div className="alert alert-primary text-center">
-          <h5 className="my-3">Welcome to next.js!</h5>
-          <MyImage fileName="image.jpg" width="80"/>
+          <h5 className="my-3">{data.message}</h5>
+          <table className="table bg-white">
+            <thead className="table-dark">
+              <tr>
+                <th>Name</th>
+                <th>Mail</th>
+                <th>Age</th>
+                </tr>
+            </thead>
+            <tbody>
+              {
+                data.data.map((value,key)=>(
+                  <tr key={key}>
+                    <th>{value.name}</th>
+                    <th>{value.mail}</th>
+                    <th>{value.age}</th>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
         </div>
       </Layout>
     </div>
