@@ -11,7 +11,8 @@ export default function Home() {
   console.log("address: " + address)
 
   const onChange = (e)=> {
-    setAddress('/api/hello?id=' + e.target.value)
+    //setAddress('/api/hello?id=' + e.target.value)
+    setAddress('/api/hello/' + e.target.value)
   }
 
   return (
