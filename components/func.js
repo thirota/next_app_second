@@ -11,9 +11,10 @@ export default {
         'total': {
             'caption':'カンマ区切りの数字の合計を計算します',
             'function':`(...param)=>{
+                let array = param[0]
                 let re=0;
-                for(let i in param) {
-                    re += param[i]*1
+                for(let i in array) {
+                    re += array[i]*1
                 }
                 return re
             }`
