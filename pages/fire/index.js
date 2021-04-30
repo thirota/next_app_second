@@ -2,6 +2,7 @@ import {useState, useEffect} from 'react'
 import Layout from '../../components/layout'
 import firebase from 'firebase'
 import '../../components/fire'
+import { Router, useRouter } from 'next/router'
 
 const db = firebase.firestore()
 
@@ -9,6 +10,7 @@ export default function Home() {
     const mydata = []
     const [data, setData] = useState(mydata)
     const [message, setMessage] = useState('wait...')
+    const router = useRouter()
 
     useEffect(()=> {
         db.collection('mydata').get().then((snapshot)=> {
@@ -46,6 +48,7 @@ export default function Home() {
                             {data}
                         </tbody>
                     </table>
+                    <button onClick={()=>router.push('/fire/add')} className="btn btn-primary">+</button>
                 </div>
             </Layout>
         </div>

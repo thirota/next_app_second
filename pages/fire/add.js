@@ -52,6 +52,8 @@ export default function Add() {
                     </div>
                 </div>
                 <button onClick={doAction} className="btn btn-primary">Add</button>
+                &nbsp;
+                <button onClick={()=>router.push('/fire')} className="btn">Cancel</button>
             </Layout>
         </div>
     )
