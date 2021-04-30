@@ -35,6 +35,7 @@ export default function Home() {
             <Layout header="Next.js" title="Top page">
                 <div className="alert alert-primary text-center">
                     <h5 className="mb-4">{message}</h5>
+                    <button onClick={()=>router.push('/fire/find')} className="btn btn-secondary">Search</button>
                     <table className="table bg-white text-left">
                         <thead>
                             <tr>
