@@ -56,7 +56,9 @@ export default function Index() {
             setUser(auth.currentUser.email)
             setMessage(auth.currentUser.displayName + ' さんの登録アドレス')
             db.collection('address').doc(auth.currentUser.email).collection('address').get().then((snapshot)=> {
+                console.log('address get success')
                 snapshot.forEach((document)=> {
+                    console.log('document: ' + document)
                     const doc = document.data()
                     addresses.push(
                         <li className="list-group-item list-group-item-action p-1" onClick={doLink} id={document.id}>
@@ -64,6 +66,7 @@ export default function Index() {
                         </li>
                     )
                 })
+                setData(addresses)
             })
         } else {
             addresses.push(
@@ -82,7 +85,7 @@ export default function Index() {
                         {data}
                     </ul>
                     <hr/>
-                    <button className="btn btn-priimary" onClick={doAdd}>Add address</button>
+                    <button className="btn btn-primary" onClick={doAdd}>Add address</button>
                 </div>
             </Layout>
         </div>
